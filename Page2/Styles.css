@@ -1,0 +1,305 @@
+* {
+  margin: 0;
+  padding: 0;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  font-family: helvetica, Arial;
+  overflow-x: hidden;
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+#preloader {
+  background: #eef7e4 url(../Page2/Images/preloader.gif) no-repeat center center;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
+.headerTop {
+  overflow: hidden;
+  height: 8vh;
+  width: 100%;
+  background-color: #eef7e4;
+  border-top: 3vh solid #e32827;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.whitewaterHighLogo {
+  height: 100%;
+  width: 6vh;
+}
+.title {
+  font-size: x-large;
+  color: #e32827;
+  padding-right: 2vh;
+}
+.body {
+  border-right: #e32827 25px solid;
+}
+/* Hamburger Menu */
+
+/* Hamburger menu button */
+.hamburgerContainer {
+  position: fixed;
+  height: 65px;
+  width: 40px;
+  background-color: #e32827;
+  border-bottom-right-radius: 30px;
+  z-index: 5;
+}
+.navcheck {
+  position: fixed;
+  opacity: 0;
+  z-index: 5;
+}
+.navcheckLabel {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  z-index: 5;
+}
+.navcheckLabel::before {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.navcheckLabel .burger {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 5;
+  width: 2em;
+  height: 2em;
+  margin: 0;
+  padding: 0;
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.navcheckLabel .burger::before,
+.navcheckLabel .burger .bar,
+.navcheckLabel .burger::after {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 12%;
+  background: white;
+  content: "";
+  z-index: 5;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.navcheckLabel .burger .bar {
+  top: 44%;
+  z-index: 5;
+}
+.navcheckLabel .burger::before {
+  top: 0;
+  transform-origin: top left;
+}
+.navcheckLabel .burger::after {
+  bottom: 0;
+  z-index: 5;
+  transform-origin: bottom left;
+}
+input:focus + .navcheckLabel .burger,
+.navcheckLabel:hover .burger {
+  opacity: 0.75;
+}
+/* End of Hamburger menu button /*
+/* Hamburger menu content */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  transform: translate3d(0, 0, 0);
+  transform: translateX(-100%);
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+nav::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 25em;
+  background: #e32827;
+  content: "";
+  transform: skewX(15deg) translateX(-100%);
+  transform-origin: bottom left;
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media (min-width: 40em) {
+  nav::before {
+    width: 40em;
+  }
+}
+nav a {
+  margin: 0.5em 0;
+  z-index: 5;
+  padding: 0.2em 2em;
+  font-size: 1.5em;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transform: translateX(-100%);
+  transition: color 0.15s, transform 0.5s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+/* End of content */
+
+nav a:nth-child(1) {
+  transition-delay: 0s, 100ms;
+}
+nav a:nth-child(2) {
+  transition-delay: 0s, 150ms;
+}
+nav a:nth-child(3) {
+  transition-delay: 0s, 200ms;
+}
+nav a:nth-child(4) {
+  transition-delay: 0s, 250ms;
+}
+nav a:nth-child(5) {
+  transition-delay: 0s, 300ms;
+}
+nav a:nth-child(6) {
+  transition-delay: 0s, 350ms;
+}
+nav a:hover,
+nav a:focus {
+  color: black;
+}
+main {
+  overflow: hidden;
+}
+main .content {
+  transform: translate3d(0, 0, 0);
+  will-change: transform, filter;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+[id="navcheck"]:checked + label::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+[id="navcheck"]:checked + label .burger::before,
+[id="navcheck"]:checked + label .burger::after {
+  width: 141.42%;
+}
+[id="navcheck"]:checked + label .burger::before {
+  transform: rotate(45deg) translateY(-50%);
+}
+[id="navcheck"]:checked + label .burger::after {
+  transform: rotate(-45deg) translateY(50%);
+}
+[id="navcheck"]:checked + label .burger .bar {
+  transform: scale(0.1);
+}
+[id="navcheck"]:checked ~ nav {
+  transform: translateX(0);
+}
+[id="navcheck"]:checked ~ nav::before {
+  transform: skewX(15deg) translateX(0);
+}
+[id="navcheck"]:checked ~ nav a {
+  transform: translateX(0);
+}
+[id="navcheck"]:checked ~ main .content {
+  transform: translateX(3em);
+  transform-origin: left center;
+  filter: blur(2px);
+}
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+/* End of hamburger menu code */
+.pageTitleContainer {
+  width: 100%;
+  background-color: #eef7e4;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.pageTitle {
+  margin-top: 5vh;
+  font-size: xx-large;
+}
+.divider {
+  width: 100%;
+  height: 2vh;
+  background-color: #e32827;
+}
+.divider-b {
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  height: 25px;
+  background-color: #e32827;
+}
+.gallery {
+  background-color: #eef7e4;
+}
+.link {
+  text-decoration: none;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1vh;
+  grid-auto-rows: 41vh;
+  grid-auto-columns: 41vw;
+  row-gap: 1vh;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  background-color: #eef7e4;
+}
+.container {
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+}
+.image {
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.image:hover {
+  transform: scale(0.8);
+}
+@media screen and (max-width: 900px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1vh;
+    grid-auto-rows: 41vh;
+    grid-auto-columns: 50vw;
+    padding-left: 1vh;
+    padding-right: 1vh;
+  }
+}
